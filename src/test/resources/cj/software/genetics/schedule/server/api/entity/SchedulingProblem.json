@@ -1,0 +1,36 @@
+{
+  "priorities": [
+    {
+      "value": 1,
+      "slotCount": 150,
+      "tasks": [
+        {
+          "identifier": 1,
+          "duration": "PT10S"
+        },
+        {
+          "identifier": 2,
+          "duration": "PT20S"
+        },
+        {
+          "identifier": 3,
+          "duration": "PT1M"
+        }
+      ]
+    },
+    {
+      "value": 2,
+      "slotCount": 80,
+      "tasks": [
+        {
+          "identifier": 101,
+          "duration": "PT15S"
+        },
+        {
+          "identifier": 102,
+          "duration": "PT24H"
+        }
+      ]
+    }
+  ]
+}
