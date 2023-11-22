@@ -1,5 +1,6 @@
 package cj.software.genetics.schedule.api.entity;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
@@ -7,11 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+import static cj.software.genetics.schedule.api.entity.TimeUnit.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SchedulingProblemTest extends ValidatingTest {
@@ -75,17 +76,17 @@ class SchedulingProblemTest extends ValidatingTest {
                                     .withValue(1)
                                     .withSlotCount(150)
                                     .withTasks(List.of(
-                                            Task.builder().withIdentifier(1).withDuration(Duration.ofSeconds(10)).build(),
-                                            Task.builder().withIdentifier(2).withDuration(Duration.ofSeconds(20)).build(),
-                                            Task.builder().withIdentifier(3).withDuration(Duration.ofMinutes(1)).build()
+                                            Task.builder().withIdentifier(1).withDuration(TimeWithUnit.builder().withTime(10).withUnit(SECONDS).build()).build(),
+                                            Task.builder().withIdentifier(2).withDuration(TimeWithUnit.builder().withTime(20).withUnit(SECONDS).build()).build(),
+                                            Task.builder().withIdentifier(3).withDuration(TimeWithUnit.builder().withTime(1).withUnit(MINUTES).build()).build()
                                     ))
                                     .build(),
                             ProblemPriority.builder()
                                     .withValue(2)
                                     .withSlotCount(80)
                                     .withTasks(List.of(
-                                            Task.builder().withIdentifier(101).withDuration(Duration.ofSeconds(15)).build(),
-                                            Task.builder().withIdentifier(102).withDuration(Duration.ofDays(1)).build()
+                                            Task.builder().withIdentifier(101).withDuration(TimeWithUnit.builder().withTime(15).withUnit(SECONDS).build()).build(),
+                                            Task.builder().withIdentifier(102).withDuration(TimeWithUnit.builder().withTime(1).withUnit(DAYS).build()).build()
                                     ))
                                     .build()
                     )).build();

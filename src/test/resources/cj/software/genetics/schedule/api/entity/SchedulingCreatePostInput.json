@@ -6,15 +6,24 @@
         "slotCount": 20,
         "tasks": [
           {
-            "duration": "PT1M",
+            "duration": {
+              "time": 1,
+              "unit": "MINUTES"
+            },
             "identifier": 3
           },
           {
-            "duration": "PT20S",
+            "duration": {
+              "time": 20,
+              "unit": "SECONDS"
+            },
             "identifier": 2
           },
           {
-            "duration": "PT10S",
+            "duration": {
+              "time": 10,
+              "unit": "SECONDS"
+            },
             "identifier": 1
           }
         ]

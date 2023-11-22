@@ -8,13 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import static cj.software.genetics.schedule.api.entity.TimeUnit.MINUTES;
+import static cj.software.genetics.schedule.api.entity.TimeUnit.SECONDS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BreedPostInputTest extends ValidatingTest {
@@ -102,8 +103,8 @@ class BreedPostInputTest extends ValidatingTest {
 
     private BreedPostInput createExpectedFromJson() {
         SortedMap<Integer, Task> tasks = new TreeMap<>();
-        tasks.put(2, Task.builder().withDuration(Duration.ofMinutes(2)).withIdentifier(32).build());
-        tasks.put(25, Task.builder().withDuration(Duration.ofSeconds(30)).withIdentifier(4).build());
+        tasks.put(2, Task.builder().withDuration(TimeWithUnit.builder().withTime(2).withUnit(MINUTES).build()).withIdentifier(32).build());
+        tasks.put(25, Task.builder().withDuration(TimeWithUnit.builder().withTime(30).withUnit(SECONDS).build()).withIdentifier(4).build());
         Collection<SolutionPriority> priorities = List.of(
                 SolutionPriority.builder()
                         .withValue(1)
