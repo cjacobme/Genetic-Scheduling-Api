@@ -17,11 +17,17 @@
                 "value": 1,
                 "tasks": {
                   "2": {
-                    "duration": "PT2M",
+                    "duration": {
+                      "time": 2,
+                      "unit": "MINUTES"
+                    },
                     "identifier": 32
                   },
                   "25": {
-                    "duration": "PT30S",
+                    "duration": {
+                      "time": 30,
+                      "unit": "SECONDS"
+                    },
                     "identifier": 4
                   }
                 }

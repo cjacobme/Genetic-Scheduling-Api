@@ -13,15 +13,24 @@
                 "value": 1,
                 "tasks": {
                   "2": {
-                    "duration": "PT1M",
+                    "duration": {
+                      "time": 1,
+                      "unit": "MINUTES"
+                    },
                     "identifier": 3
                   },
                   "25": {
-                    "duration": "PT20S",
+                    "duration": {
+                      "time": 20,
+                      "unit": "SECONDS"
+                    },
                     "identifier": 2
                   },
                   "4711": {
-                    "duration": "PT10S",
+                    "duration": {
+                      "time": 10,
+                      "unit": "SECONDS"
+                    },
                     "identifier": 123
                   }
                 }

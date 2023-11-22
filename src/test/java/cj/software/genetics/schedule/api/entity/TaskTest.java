@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,7 +45,7 @@ class TaskTest extends ValidatingTest {
     @Test
     void constructFilled() {
         Integer identifier = 1;
-        Duration duration = Duration.ofDays(1234);
+        TimeWithUnit duration = TimeWithUnit.builder().build();
         Task instance = Task.builder()
                 .withIdentifier(identifier)
                 .withDuration(duration)
@@ -68,20 +67,20 @@ class TaskTest extends ValidatingTest {
     void stringPresentation() {
         Task instance = new TaskBuilder().build();
         String asString = instance.toString();
-        assertThat(asString).as("String presentation").isEqualTo("Task[id=4243,duration=PT10S]");
+        assertThat(asString).as("String presentation").isEqualTo("Task[id=4243,duration=10 SECONDS]");
     }
 
     @Test
     void equalObjects() {
         Task instance1 = new TaskBuilder().build();
-        Task instance2 = new TaskBuilder().withDuration(Duration.ofHours(223)).build();
+        Task instance2 = new TaskBuilder().withDuration(TimeWithUnit.builder().withTime(223).withUnit(TimeUnit.HOURS).build()).build();
         assertThat(instance1).isEqualTo(instance2);
     }
 
     @Test
     void equalHashes() {
         Task instance1 = new TaskBuilder().build();
-        Task instance2 = new TaskBuilder().withDuration(Duration.ofHours(223)).build();
+        Task instance2 = new TaskBuilder().withDuration(TimeWithUnit.builder().withTime(223).withUnit(TimeUnit.HOURS).build()).build();
         int hash1 = instance1.hashCode();
         int hash2 = instance2.hashCode();
         assertThat(hash1).isEqualTo(hash2);

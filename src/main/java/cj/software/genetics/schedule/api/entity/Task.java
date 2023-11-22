@@ -1,27 +1,22 @@
 package cj.software.genetics.schedule.api.entity;
 
-import cj.software.genetics.schedule.api.converter.DurationDeserializer;
-import cj.software.genetics.schedule.api.converter.DurationSerializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.Duration;
 
 public class Task implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     @NotNull
-    @JsonDeserialize(using = DurationDeserializer.class)
-    @JsonSerialize(using = DurationSerializer.class)
-    private Duration duration;
+    @Valid
+    private TimeWithUnit duration;
 
     @NotNull
     private Integer identifier;
@@ -29,7 +24,7 @@ public class Task implements Serializable {
     private Task() {
     }
 
-    public Duration getDuration() {
+    public TimeWithUnit getDuration() {
         return duration;
     }
 
@@ -89,7 +84,7 @@ public class Task implements Serializable {
             return this;
         }
 
-        public Builder withDuration(Duration duration) {
+        public Builder withDuration(TimeWithUnit duration) {
             instance.duration = duration;
             return this;
         }
