@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.time.Duration;
 import java.util.Set;
 
+import static cj.software.genetics.schedule.api.entity.TimeUnit.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class TimeWithUnitTest {
@@ -51,7 +52,7 @@ class TimeWithUnitTest {
     @Test
     void constructFilled() {
         Integer time = -1;
-        TimeUnit unit = TimeUnit.MINUTES;
+        TimeUnit unit = MINUTES;
         TimeWithUnit instance = TimeWithUnit.builder()
                 .withTime(time)
                 .withUnit(unit)
@@ -81,7 +82,7 @@ class TimeWithUnitTest {
 
     @Test
     void toDuration96Hourse() {
-        TimeWithUnit instance = TimeWithUnit.builder().withTime(96).withUnit(TimeUnit.HOURS).build();
+        TimeWithUnit instance = TimeWithUnit.builder().withTime(96).withUnit(HOURS).build();
         assertDuration(instance, Duration.ofHours(96));
     }
 
@@ -131,15 +132,15 @@ class TimeWithUnitTest {
 
     @Test
     void unequalUnit() {
-        TimeWithUnit instance1 = new TimeWithUnitBuilder().withUnit(TimeUnit.MINUTES).build();
-        TimeWithUnit instance2 = new TimeWithUnitBuilder().withUnit(TimeUnit.SECONDS).build();
+        TimeWithUnit instance1 = new TimeWithUnitBuilder().withUnit(MINUTES).build();
+        TimeWithUnit instance2 = new TimeWithUnitBuilder().withUnit(SECONDS).build();
         assertThat(instance1).isNotEqualTo(instance2);
     }
 
     @Test
     void unequalUnitHashes() {
-        TimeWithUnit instance1 = new TimeWithUnitBuilder().withUnit(TimeUnit.MINUTES).build();
-        TimeWithUnit instance2 = new TimeWithUnitBuilder().withUnit(TimeUnit.SECONDS).build();
+        TimeWithUnit instance1 = new TimeWithUnitBuilder().withUnit(MINUTES).build();
+        TimeWithUnit instance2 = new TimeWithUnitBuilder().withUnit(SECONDS).build();
         int hash1 = instance1.hashCode();
         int hash2 = instance2.hashCode();
         assertThat(hash1).isNotEqualTo(hash2);
@@ -150,5 +151,58 @@ class TimeWithUnitTest {
         TimeWithUnit instance1 = new TimeWithUnitBuilder().build();
         Object instance2 = "I'm a String";
         assertThat(instance1).isNotEqualTo(instance2);
+    }
+
+    @Test
+    void of2Days() {
+        TimeWithUnit instance = TimeWithUnit.ofDays(2);
+        assertEqual(instance, 2, DAYS);
+    }
+
+    @Test
+    void of15Days() {
+        TimeWithUnit instance = TimeWithUnit.ofDays(15);
+        assertEqual(instance, 15, DAYS);
+    }
+
+    @Test
+    void ofThreeHours() {
+        TimeWithUnit instance = TimeWithUnit.ofHours(3);
+        assertEqual(instance, 3, HOURS);
+    }
+
+    @Test
+    void ofFiveHours() {
+        TimeWithUnit instance = TimeWithUnit.ofHours(5);
+        assertEqual(instance, 5, HOURS);
+    }
+
+    @Test
+    void ofThreeMinutes() {
+        TimeWithUnit instance = TimeWithUnit.ofMinutes(3);
+        assertEqual(instance, 3, MINUTES);
+    }
+
+    @Test
+    void ofFiveMinutes() {
+        TimeWithUnit instance = TimeWithUnit.ofMinutes(5);
+        assertEqual(instance, 5, MINUTES);
+    }
+
+    @Test
+    void of13Seconds() {
+        TimeWithUnit instance = TimeWithUnit.ofSeconds(13);
+        assertEqual(instance, 13, SECONDS);
+    }
+
+    @Test
+    void of95Seconds() {
+        TimeWithUnit instance = TimeWithUnit.ofSeconds(95);
+        assertEqual(instance, 95, SECONDS);
+    }
+
+    private void assertEqual(TimeWithUnit instance, int time, TimeUnit unit) {
+        TimeWithUnit other = TimeWithUnit.builder().withTime(time).withUnit(unit).build();
+        assertThat(instance).isEqualTo(other);
     }
 }

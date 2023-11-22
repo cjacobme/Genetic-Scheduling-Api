@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
+import static cj.software.genetics.schedule.api.entity.TimeUnit.*;
+
 public class TimeWithUnit implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -20,6 +22,26 @@ public class TimeWithUnit implements Serializable {
     private TimeUnit unit;
 
     private TimeWithUnit() {
+    }
+
+    public static TimeWithUnit ofDays(int days) {
+        TimeWithUnit result = TimeWithUnit.builder().withTime(days).withUnit(DAYS).build();
+        return result;
+    }
+
+    public static TimeWithUnit ofHours(int hours) {
+        TimeWithUnit result = TimeWithUnit.builder().withTime(hours).withUnit(HOURS).build();
+        return result;
+    }
+
+    public static TimeWithUnit ofMinutes(int minutes) {
+        TimeWithUnit result = TimeWithUnit.builder().withTime(minutes).withUnit(MINUTES).build();
+        return result;
+    }
+
+    public static TimeWithUnit ofSeconds(int seconds) {
+        TimeWithUnit result = TimeWithUnit.builder().withTime(seconds).withUnit(SECONDS).build();
+        return result;
     }
 
     public Integer getTime() {
