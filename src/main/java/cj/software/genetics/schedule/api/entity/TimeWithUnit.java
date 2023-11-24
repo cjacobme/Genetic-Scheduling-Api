@@ -24,6 +24,14 @@ public class TimeWithUnit implements Serializable {
     private TimeWithUnit() {
     }
 
+    /**
+     * copy constructor
+     */
+    public TimeWithUnit(TimeWithUnit source) {
+        this.time = source.getTime();
+        this.unit = source.getUnit();
+    }
+
     public static TimeWithUnit ofDays(int days) {
         TimeWithUnit result = TimeWithUnit.builder().withTime(days).withUnit(DAYS).build();
         return result;
