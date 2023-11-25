@@ -205,4 +205,34 @@ class TimeWithUnitTest {
         TimeWithUnit other = TimeWithUnit.builder().withTime(time).withUnit(unit).build();
         assertThat(instance).isEqualTo(other);
     }
+
+    @Test
+    void toSecondsFrom10Seconds() {
+        assertToSeconds(TimeWithUnit.ofSeconds(10), 10);
+    }
+
+    @Test
+    void toSecondsFrom20Seconds() {
+        assertToSeconds(TimeWithUnit.ofSeconds(20), 20);
+    }
+
+    @Test
+    void assertToSecondsFrom3Minutes() {
+        assertToSeconds(TimeWithUnit.ofMinutes(3), 180);
+    }
+
+    @Test
+    void assertToSecondsFrom12Hours() {
+        assertToSeconds(TimeWithUnit.ofHours(12), 43200);
+    }
+
+    @Test
+    void assertToSecondsFrom5Days() {
+        assertToSeconds(TimeWithUnit.ofDays(5), 432000);
+    }
+
+    private void assertToSeconds(TimeWithUnit instance, int expected) {
+        int actual = instance.toSeconds();
+        assertThat(actual).isEqualTo(expected);
+    }
 }

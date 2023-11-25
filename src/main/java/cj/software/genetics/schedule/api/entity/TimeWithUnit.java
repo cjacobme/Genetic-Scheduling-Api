@@ -99,6 +99,11 @@ public class TimeWithUnit implements Serializable {
         return result;
     }
 
+    public int toSeconds() {
+        int result = this.time * this.unit.getSecondsFactor();
+        return result;
+    }
+
     public static class Builder {
         protected TimeWithUnit instance;
 
