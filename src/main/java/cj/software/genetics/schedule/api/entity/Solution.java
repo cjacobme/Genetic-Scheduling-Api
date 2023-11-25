@@ -30,6 +30,9 @@ public class Solution implements Serializable {
     @NotNull
     private Double fitnessValue;
 
+    @NotNull
+    private Long durationInSeconds;
+
     @NotEmpty
     private final List<@NotNull @Valid Worker> workers = new ArrayList<>();
 
@@ -50,6 +53,14 @@ public class Solution implements Serializable {
 
     public void setFitnessValue(Double fitnessValue) {
         this.fitnessValue = fitnessValue;
+    }
+
+    public Long getDurationInSeconds() {
+        return durationInSeconds;
+    }
+
+    public void setDurationInSeconds(Long durationInSeconds) {
+        this.durationInSeconds = durationInSeconds;
     }
 
     public List<Worker> getWorkers() {

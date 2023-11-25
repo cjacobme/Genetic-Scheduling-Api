@@ -4,18 +4,25 @@ import java.time.temporal.ChronoUnit;
 
 public enum TimeUnit {
 
-    DAYS(ChronoUnit.DAYS),
-    HOURS(ChronoUnit.HOURS),
-    MINUTES(ChronoUnit.MINUTES),
-    SECONDS(ChronoUnit.SECONDS);
+    DAYS(ChronoUnit.DAYS, 86400),
+    HOURS(ChronoUnit.HOURS, 3600),
+    MINUTES(ChronoUnit.MINUTES, 60),
+    SECONDS(ChronoUnit.SECONDS, 1);
 
     private final ChronoUnit chronoUnit;
 
-    TimeUnit(ChronoUnit chronoUnit) {
+    private final int secondsFactor;
+
+    TimeUnit(ChronoUnit chronoUnit, int secondsFactor) {
         this.chronoUnit = chronoUnit;
+        this.secondsFactor = secondsFactor;
     }
 
     public ChronoUnit getChronoUnit() {
         return chronoUnit;
+    }
+
+    public int getSecondsFactor() {
+        return secondsFactor;
     }
 }
