@@ -10,6 +10,7 @@
         "generationStep": 2,
         "indexInPopulation": 3,
         "fitnessValue": 2.95,
+        "durationInSeconds": 4,
         "workers": [
           {
             "priorities": [

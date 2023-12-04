@@ -50,11 +50,13 @@ class SolutionTest extends ValidatingTest {
         Integer generationStep = -1;
         Integer indexInGeneration = -2;
         double fitnessValue = -3.14;
+        long durationInSeconds = 5;
         List<Worker> workers = List.of(new WorkerBuilder().build(), new WorkerBuilder().build());
         Solution instance = Solution.builder()
                 .withGenerationStep(generationStep)
                 .withIndexInPopulation(indexInGeneration)
                 .withFitnessValue(fitnessValue)
+                .withDurationInSeconds(durationInSeconds)
                 .withWorkers(workers)
                 .build();
         assertThat(instance).as("built instance").isNotNull();
@@ -62,6 +64,7 @@ class SolutionTest extends ValidatingTest {
         softy.assertThat(instance.getGenerationStep()).as("generation step").isEqualTo(generationStep);
         softy.assertThat(instance.getIndexInPopulation()).as("index in generation").isEqualTo(indexInGeneration);
         softy.assertThat(instance.getFitnessValue()).as("fitness value").isEqualTo(fitnessValue);
+        softy.assertThat(instance.getDurationInSeconds()).as("duration in seconds").isEqualTo(durationInSeconds);
         softy.assertThat(instance.getWorkers()).as("workers").isEqualTo(workers);
         softy.assertAll();
     }

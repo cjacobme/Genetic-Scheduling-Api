@@ -9,6 +9,8 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public abstract class ValidatingTest {
     private static ValidatorFactory factory;
 
@@ -25,8 +27,8 @@ public abstract class ValidatingTest {
         factory.close();
     }
 
-    public <T> Set<ConstraintViolation<T>> validate(T object, Class<?>... groups) {
-        Set<ConstraintViolation<T>> result = validator.validate(object, groups);
-        return result;
+    public <T> void validate(T object, Class<?>... groups) {
+        Set<ConstraintViolation<T>> violations = validator.validate(object, groups);
+        assertThat(violations).as("constraint violations").isEmpty();
     }
 }

@@ -120,6 +120,7 @@ class BreedPostInputTest extends ValidatingTest {
                         .withGenerationStep(2)
                         .withIndexInPopulation(3)
                         .withFitnessValue(2.95)
+                        .withDurationInSeconds(4L)
                         .withWorkers(workers)
                         .build());
         Population population = Population.builder()

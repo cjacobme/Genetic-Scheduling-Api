@@ -140,5 +140,10 @@ public class Solution implements Serializable {
             }
             return this;
         }
+
+        public Builder withDurationInSeconds(long durationInSeconds) {
+            instance.setDurationInSeconds(durationInSeconds);
+            return this;
+        }
     }
 }
