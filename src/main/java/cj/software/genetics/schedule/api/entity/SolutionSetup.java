@@ -17,6 +17,9 @@ public class SolutionSetup implements Serializable {
     @Min(1)
     private Integer workersPerSolutionCount;
 
+    @NotNull
+    private FitnessProcedure fitnessProcedure;
+
     private SolutionSetup() {
     }
 
@@ -26,6 +29,10 @@ public class SolutionSetup implements Serializable {
 
     public Integer getWorkersPerSolutionCount() {
         return workersPerSolutionCount;
+    }
+
+    public FitnessProcedure getFitnessProcedure() {
+        return fitnessProcedure;
     }
 
     public static Builder builder() {
@@ -52,6 +59,11 @@ public class SolutionSetup implements Serializable {
 
         public Builder withWorkersPerSolutionCount(Integer workersPerSolutionCount) {
             instance.workersPerSolutionCount = workersPerSolutionCount;
+            return this;
+        }
+
+        public Builder withFitnessProcedure(FitnessProcedure fitnessProcedure) {
+            instance.fitnessProcedure = fitnessProcedure;
             return this;
         }
     }

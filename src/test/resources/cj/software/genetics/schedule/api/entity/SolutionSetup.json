@@ -1,4 +1,5 @@
 {
   "solutionCount": 101,
-  "workersPerSolutionCount": 4
+  "workersPerSolutionCount": 4,
+  "fitnessProcedure": "AVERAGE"
 }
