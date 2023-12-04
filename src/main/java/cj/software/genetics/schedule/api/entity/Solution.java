@@ -1,5 +1,6 @@
 package cj.software.genetics.schedule.api.entity;
 
+import cj.software.genetics.schedule.api.validation.AllTasksDispatchedOnce;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@AllTasksDispatchedOnce
 public class Solution implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
