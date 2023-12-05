@@ -33,6 +33,9 @@ public class BreedPostInput implements Serializable {
     @Valid
     private Population population;
 
+    @NotNull
+    private FitnessProcedure fitnessProcedure;
+
     private BreedPostInput() {
     }
 
@@ -54,6 +57,10 @@ public class BreedPostInput implements Serializable {
 
     public Population getPopulation() {
         return population;
+    }
+
+    public FitnessProcedure getFitnessProcedure() {
+        return fitnessProcedure;
     }
 
     public static Builder builder() {
@@ -95,6 +102,11 @@ public class BreedPostInput implements Serializable {
 
         public Builder withPopulation(Population population) {
             instance.population = population;
+            return this;
+        }
+
+        public Builder withFitnessProcedure(FitnessProcedure fitnessProcedure) {
+            instance.fitnessProcedure = fitnessProcedure;
             return this;
         }
     }

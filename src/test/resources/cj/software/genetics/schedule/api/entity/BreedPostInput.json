@@ -3,6 +3,7 @@
   "elitismCount": 7,
   "tournamentSize": 5,
   "mutationRate": 0.15,
+  "fitnessProcedure": "AVERAGE",
   "population": {
     "generationStep": 3,
     "solutions": [
