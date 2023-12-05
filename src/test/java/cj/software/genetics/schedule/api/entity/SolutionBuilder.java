@@ -6,8 +6,6 @@ public class SolutionBuilder extends Solution.Builder {
     public SolutionBuilder() {
         super.withGenerationStep(15)
                 .withIndexInPopulation(33)
-                .withFitnessValue(2.35746)
-                .withDurationInSeconds(12L)
                 .withWorkers(List.of(
                         new WorkerBuilder().build()
                 ));
