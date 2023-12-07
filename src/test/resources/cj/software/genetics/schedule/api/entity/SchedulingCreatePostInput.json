@@ -32,6 +32,7 @@
   },
   "solutionSetup": {
     "solutionCount": 2,
-    "workersPerSolutionCount": 2
+    "workersPerSolutionCount": 2,
+    "fitnessProcedure": "LATEST"
   }
 }

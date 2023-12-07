@@ -40,8 +40,8 @@ class SolutionTest extends ValidatingTest {
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getGenerationStep()).as("generation step").isNull();
         softy.assertThat(instance.getIndexInPopulation()).as("index in population").isNull();
-        softy.assertThat(instance.getFitnessValue()).as("fitness value").isNull();
         softy.assertThat(instance.getWorkers()).as("workers").isEmpty();
+        softy.assertThat(instance.getFitness()).as("fitness").isNull();
         softy.assertAll();
     }
 
@@ -50,19 +50,21 @@ class SolutionTest extends ValidatingTest {
         Integer generationStep = -1;
         Integer indexInGeneration = -2;
         double fitnessValue = -3.14;
+        long durationInSeconds = 5;
         List<Worker> workers = List.of(new WorkerBuilder().build(), new WorkerBuilder().build());
+        Fitness fitness = Fitness.builder().build();
         Solution instance = Solution.builder()
                 .withGenerationStep(generationStep)
                 .withIndexInPopulation(indexInGeneration)
-                .withFitnessValue(fitnessValue)
                 .withWorkers(workers)
                 .build();
+        instance.setFitness(fitness);
         assertThat(instance).as("built instance").isNotNull();
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getGenerationStep()).as("generation step").isEqualTo(generationStep);
         softy.assertThat(instance.getIndexInPopulation()).as("index in generation").isEqualTo(indexInGeneration);
-        softy.assertThat(instance.getFitnessValue()).as("fitness value").isEqualTo(fitnessValue);
         softy.assertThat(instance.getWorkers()).as("workers").isEqualTo(workers);
+        softy.assertThat(instance.getFitness()).as("fitness").isSameAs(fitness);
         softy.assertAll();
     }
 
@@ -75,14 +77,14 @@ class SolutionTest extends ValidatingTest {
     @Test
     void equalObjects() {
         Solution instance1 = new SolutionBuilder().build();
-        Solution instance2 = new SolutionBuilder().withFitnessValue(34445.6).withWorkers(null).build();
+        Solution instance2 = new SolutionBuilder().withWorkers(null).build();
         assertThat(instance1).isEqualTo(instance2);
     }
 
     @Test
     void equalHashes() {
         Solution instance1 = new SolutionBuilder().build();
-        Solution instance2 = new SolutionBuilder().withFitnessValue(34445.6).withWorkers(null).build();
+        Solution instance2 = new SolutionBuilder().withWorkers(null).build();
         int hash1 = instance1.hashCode();
         int hash2 = instance2.hashCode();
         assertThat(hash1).isEqualTo(hash2);

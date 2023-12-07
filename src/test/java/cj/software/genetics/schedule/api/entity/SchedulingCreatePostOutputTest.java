@@ -81,7 +81,6 @@ class SchedulingCreatePostOutputTest extends ValidatingTest {
             SoftAssertions softy = new SoftAssertions();
             softy.assertThat(solution.getIndexInPopulation()).as("index in population").isEqualTo(1);
             softy.assertThat(solution.getGenerationStep()).as("generation step").isEqualTo(0);
-            softy.assertThat(solution.getFitnessValue()).as("fitness value").isEqualTo(3.14);
             softy.assertThat(workers).as("workers").hasSize(1);
             softy.assertAll();
             Worker worker = workers.get(0);

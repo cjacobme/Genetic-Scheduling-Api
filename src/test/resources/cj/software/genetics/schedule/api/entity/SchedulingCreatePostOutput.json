@@ -5,7 +5,6 @@
       {
         "generationStep": 0,
         "indexInPopulation": 1,
-        "fitnessValue": 3.14,
         "workers": [
           {
             "priorities": [

@@ -44,6 +44,7 @@ class SolutionSetupTest extends ValidatingTest {
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getSolutionCount()).as("solution count").isNull();
         softy.assertThat(instance.getWorkersPerSolutionCount()).as("workers per solution count").isNull();
+        softy.assertThat(instance.getFitnessProcedure()).as("fitness procedure").isNull();
         softy.assertAll();
     }
 
@@ -51,14 +52,17 @@ class SolutionSetupTest extends ValidatingTest {
     void constructFilled() {
         Integer solutionCount = -1;
         Integer workersPerSolutionCount = -2;
+        FitnessProcedure fitnessProcedure = FitnessProcedure.AVERAGE;
         SolutionSetup instance = SolutionSetup.builder()
                 .withSolutionCount(solutionCount)
                 .withWorkersPerSolutionCount(workersPerSolutionCount)
+                .withFitnessProcedure(fitnessProcedure)
                 .build();
         assertThat(instance).as("built instance").isNotNull();
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getSolutionCount()).as("solution count").isEqualTo(solutionCount);
         softy.assertThat(instance.getWorkersPerSolutionCount()).as("workers per solution count").isEqualTo(workersPerSolutionCount);
+        softy.assertThat(instance.getFitnessProcedure()).as("fitness procedure").isEqualTo(fitnessProcedure);
         softy.assertAll();
     }
 
@@ -77,6 +81,7 @@ class SolutionSetupTest extends ValidatingTest {
             SolutionSetup expected = SolutionSetup.builder()
                     .withSolutionCount(101)
                     .withWorkersPerSolutionCount(4)
+                    .withFitnessProcedure(FitnessProcedure.AVERAGE)
                     .build();
             assertThat(loaded).usingRecursiveComparison().isEqualTo(expected);
         }

@@ -29,11 +29,9 @@ public class Solution implements Serializable {
     @Min(0)
     private Integer indexInPopulation;
 
-    @NotNull
-    private Double fitnessValue;
-
-    @NotNull
-    private Long durationInSeconds;
+    @NotNull(groups = FitnessCalculated.class)
+    @Valid
+    private Fitness fitness;
 
     @NotEmpty
     private final List<@NotNull @Valid Worker> workers = new ArrayList<>();
@@ -49,24 +47,16 @@ public class Solution implements Serializable {
         return indexInPopulation;
     }
 
-    public Double getFitnessValue() {
-        return fitnessValue;
-    }
-
-    public void setFitnessValue(Double fitnessValue) {
-        this.fitnessValue = fitnessValue;
-    }
-
-    public Long getDurationInSeconds() {
-        return durationInSeconds;
-    }
-
-    public void setDurationInSeconds(Long durationInSeconds) {
-        this.durationInSeconds = durationInSeconds;
-    }
-
     public List<Worker> getWorkers() {
         return Collections.unmodifiableList(workers);
+    }
+
+    public Fitness getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(Fitness fitness) {
+        this.fitness = fitness;
     }
 
     @Override
@@ -125,11 +115,6 @@ public class Solution implements Serializable {
 
         public Builder withIndexInPopulation(Integer indexInPopulation) {
             instance.indexInPopulation = indexInPopulation;
-            return this;
-        }
-
-        public Builder withFitnessValue(double fitnessValue) {
-            instance.fitnessValue = fitnessValue;
             return this;
         }
 

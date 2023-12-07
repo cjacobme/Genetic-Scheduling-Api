@@ -6,7 +6,7 @@ public class WorkerBuilder extends Worker.Builder {
     public WorkerBuilder() {
         super.withPriorities(List.of(
                 new SolutionPriorityBuilder().build(),
-                new SolutionPriorityBuilder().withValue(2).build()
+                new SolutionPriorityBuilder().withValue(2).withTasks(TaskBuilder.create(115, 135)).build()
         ));
     }
 }

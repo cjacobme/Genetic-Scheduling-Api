@@ -51,6 +51,7 @@ class BreedPostInputTest extends ValidatingTest {
         softy.assertThat(instance.getTournamentSize()).as("tournament size").isNull();
         softy.assertThat(instance.getMutationRate()).as("mutation rate").isNull();
         softy.assertThat(instance.getPopulation()).as("population").isNull();
+        softy.assertThat(instance.getFitnessProcedure()).as("fitness procedure").isNull();
         softy.assertAll();
     }
 
@@ -61,6 +62,7 @@ class BreedPostInputTest extends ValidatingTest {
         Integer tournamentSize = -4;
         Double mutationRate = -1.2;
         Population population = Population.builder().build();
+        FitnessProcedure fitnessProcedure = FitnessProcedure.LATEST;
 
         BreedPostInput instance = BreedPostInput.builder()
                 .withNumSteps(numSteps)
@@ -68,6 +70,7 @@ class BreedPostInputTest extends ValidatingTest {
                 .withTournamentSize(tournamentSize)
                 .withMutationRate(mutationRate)
                 .withPopulation(population)
+                .withFitnessProcedure(fitnessProcedure)
                 .build();
 
         assertThat(instance).as("built instance").isNotNull();
@@ -77,6 +80,7 @@ class BreedPostInputTest extends ValidatingTest {
         softy.assertThat(instance.getTournamentSize()).as("tournament size").isEqualTo(tournamentSize);
         softy.assertThat(instance.getMutationRate()).as("mutation rate").isEqualTo(mutationRate);
         softy.assertThat(instance.getPopulation()).as("population").isSameAs(population);
+        softy.assertThat(instance.getFitnessProcedure()).as("fitness procedure").isEqualTo(fitnessProcedure);
         softy.assertAll();
     }
 
@@ -119,7 +123,6 @@ class BreedPostInputTest extends ValidatingTest {
                 Solution.builder()
                         .withGenerationStep(2)
                         .withIndexInPopulation(3)
-                        .withFitnessValue(2.95)
                         .withWorkers(workers)
                         .build());
         Population population = Population.builder()
@@ -127,6 +130,7 @@ class BreedPostInputTest extends ValidatingTest {
                 .withSolutions(solutions)
                 .build();
         BreedPostInput result = BreedPostInput.builder()
+                .withFitnessProcedure(FitnessProcedure.AVERAGE)
                 .withNumSteps(20)
                 .withElitismCount(7)
                 .withTournamentSize(5)
