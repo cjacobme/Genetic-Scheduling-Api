@@ -1,5 +1,5 @@
 {
   "solutionCount": 101,
   "workersPerSolutionCount": 4,
-  "fitnessProcedure": "AVERAGE"
+  "fitnessProcedure": "STD_DEVIATION"
 }

@@ -7,6 +7,6 @@ public class BreedPostInputBuilder extends BreedPostInput.Builder {
                 .withTournamentSize(5)
                 .withMutationRate(0.356)
                 .withPopulation(new PopulationBuilder().build())
-                .withFitnessProcedure(FitnessProcedure.AVERAGE);
+                .withFitnessProcedure(FitnessProcedure.STD_DEVIATION);
     }
 }

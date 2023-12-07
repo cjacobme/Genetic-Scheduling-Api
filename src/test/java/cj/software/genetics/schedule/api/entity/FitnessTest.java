@@ -42,7 +42,7 @@ class FitnessTest {
         Object instanceAfter = field.get(builder);
         assertThat(instanceAfter).as("instance in builder after build").isNull();
         SoftAssertions softy = new SoftAssertions();
-        softy.assertThat(instance.getDurationInSeconds()).as("duration in seconds").isNull();
+        softy.assertThat(instance.getRelevantValue()).as("duration in seconds").isNull();
         softy.assertThat(instance.getFitnessValue()).as("fitness value").isNull();
         softy.assertAll();
     }
@@ -52,12 +52,12 @@ class FitnessTest {
         Double durationInSeconds = 0.1;
         Double fitnessValue = 0.2;
         Fitness instance = Fitness.builder()
-                .withDurationInSeconds(durationInSeconds)
+                .withRelevantValue(durationInSeconds)
                 .withFitnessValue(fitnessValue)
                 .build();
         assertThat(instance).as("built instance").isNotNull();
         SoftAssertions softy = new SoftAssertions();
-        softy.assertThat(instance.getDurationInSeconds()).as("duration in seconds").isEqualTo(durationInSeconds);
+        softy.assertThat(instance.getRelevantValue()).as("duration in seconds").isEqualTo(durationInSeconds);
         softy.assertThat(instance.getFitnessValue()).as("fitness value").isEqualTo(fitnessValue);
         softy.assertAll();
     }
