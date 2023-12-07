@@ -11,7 +11,7 @@ public final class Fitness implements Serializable {
 
     @NotNull
     @DecimalMin(value = "0.0", inclusive = false)
-    private Double durationInSeconds;
+    private Double relevantValue;
 
     @NotNull
     @DecimalMin(value = "0.0", inclusive = false)
@@ -20,8 +20,8 @@ public final class Fitness implements Serializable {
     private Fitness() {
     }
 
-    public Double getDurationInSeconds() {
-        return durationInSeconds;
+    public Double getRelevantValue() {
+        return relevantValue;
     }
 
     public Double getFitnessValue() {
@@ -45,8 +45,8 @@ public final class Fitness implements Serializable {
             return result;
         }
 
-        public Builder withDurationInSeconds(Double durationInSeconds) {
-            instance.durationInSeconds = durationInSeconds;
+        public Builder withRelevantValue(Double relevantValue) {
+            instance.relevantValue = relevantValue;
             return this;
         }
 

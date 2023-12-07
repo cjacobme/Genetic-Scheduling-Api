@@ -10,7 +10,7 @@ public enum FitnessProcedure {
     LATEST,
 
     /**
-     * the fitness value is calculated as 1.0 divided by the average duration of all workers.
+     * the fitness value is calculated as 1.0 divided by the standard deviation of the durations of all workers
      */
-    AVERAGE
+    STD_DEVIATION
 }

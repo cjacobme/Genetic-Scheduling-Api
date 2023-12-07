@@ -130,7 +130,7 @@ class BreedPostInputTest extends ValidatingTest {
                 .withSolutions(solutions)
                 .build();
         BreedPostInput result = BreedPostInput.builder()
-                .withFitnessProcedure(FitnessProcedure.AVERAGE)
+                .withFitnessProcedure(FitnessProcedure.STD_DEVIATION)
                 .withNumSteps(20)
                 .withElitismCount(7)
                 .withTournamentSize(5)

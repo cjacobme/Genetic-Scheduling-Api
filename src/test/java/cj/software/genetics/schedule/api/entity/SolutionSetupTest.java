@@ -52,7 +52,7 @@ class SolutionSetupTest extends ValidatingTest {
     void constructFilled() {
         Integer solutionCount = -1;
         Integer workersPerSolutionCount = -2;
-        FitnessProcedure fitnessProcedure = FitnessProcedure.AVERAGE;
+        FitnessProcedure fitnessProcedure = FitnessProcedure.STD_DEVIATION;
         SolutionSetup instance = SolutionSetup.builder()
                 .withSolutionCount(solutionCount)
                 .withWorkersPerSolutionCount(workersPerSolutionCount)
@@ -81,7 +81,7 @@ class SolutionSetupTest extends ValidatingTest {
             SolutionSetup expected = SolutionSetup.builder()
                     .withSolutionCount(101)
                     .withWorkersPerSolutionCount(4)
-                    .withFitnessProcedure(FitnessProcedure.AVERAGE)
+                    .withFitnessProcedure(FitnessProcedure.STD_DEVIATION)
                     .build();
             assertThat(loaded).usingRecursiveComparison().isEqualTo(expected);
         }
