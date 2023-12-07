@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Fitness implements Serializable {
+public final class Fitness implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
