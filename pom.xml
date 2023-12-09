@@ -28,6 +28,12 @@
         <mockito.version>5.7.0</mockito.version>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</connection>
+        <url>git@github.com:cjacobme/Genetic-Scheduling-Api.git</url>
+        <developerConnection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</developerConnection>
+    </scm>
+
     <distributionManagement>
         <repository>
             <id>github</id>
