@@ -1,0 +1,46 @@
+name: Release with maven
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "The branch to checkout when building the release. Later to be limited to main"
+        required: true
+        default: "main"
+      releaseVersion:
+        description: "next release version"
+        required: true
+      snapshotVersion:
+        description: "next snapshot version"
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout specified branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.events.branch }}
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: setup JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'temurin'
+
+      - name: Configure Git User
+        run: |
+          git config user.email "cjacobme@aol.com"
+          git config user.name "Github Scheduling API"
+
+      - name: build the release
+        run: mvn -B -DdevelopmentVersion=${{ github.events.snapshotVersion }} -DreleaseVersion=${{ github.events.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
