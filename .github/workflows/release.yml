@@ -39,12 +39,12 @@ jobs:
           distribution: 'temurin'
 
       - name: configure ssh settings
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: configure git settings
         run: |
-          eval $(ssh-agent -s)
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-          echo ${{ secrets.SSH_KEY }}  | tr -d '\r' | ssh-add -
           git config user.email "cjacobme@aol.com"
           git config user.name "Github Scheduling API"
 
