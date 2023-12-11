@@ -18,10 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print it
-        run: |
-          echo ${{ secrets.GENETIC_SCHEDULING_API_SECRET }}
-          echo ${{ vars.GREETING }}
 
       - name: Checkout specified branch
         uses: actions/checkout@v4
@@ -42,10 +38,20 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
 
-      - name: Configure Git User
+      - name: configure ssh settings
         run: |
+          eval $(ssh-agent -s)
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+          echo ${{ secrets.SSH_KEY }}  | tr -d '\r' | ssh-add -
           git config user.email "cjacobme@aol.com"
           git config user.name "Github Scheduling API"
+
+      - name: checkout branch to be built
+        uses: actions/checkout@4
+        with:
+          ref: ${{ github.events.inputs.branch }}
 
       - name: build the release
         run: mvn -B -DdevelopmentVersion=${{ github.events.snapshotVersion }} -DreleaseVersion=${{ github.events.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
