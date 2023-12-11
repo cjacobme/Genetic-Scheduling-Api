@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: print it
         run: |
-          echo "{{ secrets.GENETIC_SCHEDULING_API_SECRET }}"
+          echo ${{ secrets.GENETIC_SCHEDULING_API_SECRET }}
 
       - name: Checkout specified branch
         uses: actions/checkout@v4
