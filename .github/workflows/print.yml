@@ -12,6 +12,5 @@ jobs:
 
     steps:
       - name: print it
-        uses: actions/checkout@4
         run: |
           echo "{{ secrets.GENETIC_SCHEDULING_API_SECRET }}"
