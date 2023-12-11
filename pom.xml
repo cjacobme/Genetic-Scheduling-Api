@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress MavenModelInspection -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cj.software.experiments.genetics.schedule</groupId>
     <artifactId>schedule-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>API of the Genetic Scheduling Server</name>
 
 
@@ -32,7 +31,8 @@
         <connection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</connection>
         <url>git@github.com:cjacobme/Genetic-Scheduling-Api.git</url>
         <developerConnection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</developerConnection>
-    </scm>
+      <tag>1.0</tag>
+  </scm>
 
     <distributionManagement>
         <repository>
