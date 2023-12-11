@@ -5,7 +5,7 @@
 
     <groupId>cj.software.experiments.genetics.schedule</groupId>
     <artifactId>schedule-api</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
     <name>API of the Genetic Scheduling Server</name>
 
 
@@ -31,7 +31,7 @@
         <connection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</connection>
         <url>git@github.com:cjacobme/Genetic-Scheduling-Api.git</url>
         <developerConnection>scm:git:git@github.com:cjacobme/Genetic-Scheduling-Api.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>1.1</tag>
   </scm>
 
     <distributionManagement>
