@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print it
+        run: |
+          echo "{{ secrets.GENETIC_SCHEDULING_API_SECRET }}"
+
       - name: Checkout specified branch
         uses: actions/checkout@v4
         with:
