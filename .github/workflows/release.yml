@@ -49,7 +49,7 @@ jobs:
           git config user.name "Github Scheduling API"
 
       - name: checkout branch to be built
-        uses: actions/checkout@4
+        uses: actions/checkout@2
         with:
           ref: ${{ github.events.inputs.branch }}
 
