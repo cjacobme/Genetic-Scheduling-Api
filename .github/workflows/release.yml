@@ -48,10 +48,5 @@ jobs:
           git config user.email "cjacobme@aol.com"
           git config user.name "Github Scheduling API"
 
-      - name: checkout branch to be built
-        uses: actions/checkout@2
-        with:
-          ref: ${{ github.events.inputs.branch }}
-
       - name: build the release
         run: mvn -B -DdevelopmentVersion=${{ github.events.snapshotVersion }} -DreleaseVersion=${{ github.events.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
