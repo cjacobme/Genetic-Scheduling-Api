@@ -49,9 +49,9 @@ jobs:
 
       - name: build the release
         run: |
-          echo "release= "${{ github.events.releaseVersion }}
-          echo "snapshot="${{ github.events.snapshotVersion }}
-          mvn -B -DdevelopmentVersion=${{ github.events.snapshotVersion }} -DreleaseVersion=${{ github.events.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
+          echo "release= "${{ github.event.inputs.releaseVersion }}
+          echo "snapshot="${{ github.event.inputs.snapshotVersion }}
+          mvn -B -DdevelopmentVersion=${{ github.event.inputs.snapshotVersion }} -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
