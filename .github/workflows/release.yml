@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print out some variables
+        run: |
+          echo "actor=" + ${{ github.actor }}
 
       - name: Checkout specified branch
         uses: actions/checkout@v4
