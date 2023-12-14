@@ -18,10 +18,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print out some variables
-        run: |
-          echo "actor=" + ${{ github.actor }}
-
       - name: Checkout specified branch
         uses: actions/checkout@v4
         with:
@@ -53,3 +49,6 @@ jobs:
 
       - name: build the release
         run: mvn -B -DdevelopmentVersion=${{ github.events.snapshotVersion }} -DreleaseVersion=${{ github.events.releaseVersion }} -DtagNameFormat=@{project.version} release:prepare release:perform -s settings.xml
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
