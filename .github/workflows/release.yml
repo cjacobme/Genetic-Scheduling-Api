@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Fail if branch is not main
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
-        run: |
-          echo "This workflow should not be triggered with workflow_dispatch on a branch other than main"
-          exit 1
+      #        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+      #        run: |
+      #          echo "This workflow should not be triggered with workflow_dispatch on a branch other than main"
+      #          exit 1
 
       - name: Checkout specified branch
         uses: actions/checkout@v4
@@ -36,11 +36,6 @@ jobs:
         with:
           java-version: '19'
           distribution: 'temurin'
-
-      - name: configure ssh settings
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: configure git settings
         run: |
