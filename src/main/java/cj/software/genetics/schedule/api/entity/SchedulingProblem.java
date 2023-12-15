@@ -1,5 +1,6 @@
 package cj.software.genetics.schedule.api.entity;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,7 +14,7 @@ public class SchedulingProblem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotEmpty
-    private final SortedSet<ProblemPriority> priorities = new TreeSet<>();
+    private final SortedSet<@Valid ProblemPriority> priorities = new TreeSet<>();
 
     private SchedulingProblem() {
     }
