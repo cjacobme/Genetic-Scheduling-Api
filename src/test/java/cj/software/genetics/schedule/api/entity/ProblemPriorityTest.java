@@ -40,7 +40,6 @@ class ProblemPriorityTest extends ValidatingTest {
         assertThat(instanceAfter).as("instance in builder after build").isNull();
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getValue()).as("priority value").isNull();
-        softy.assertThat(instance.getSlotCount()).as("slot count").isNull();
         softy.assertThat(instance.getTasks()).as("tasks collection").isEmpty();
         softy.assertAll();
     }
@@ -48,20 +47,17 @@ class ProblemPriorityTest extends ValidatingTest {
     @Test
     void constructFilled() {
         Integer value = 13;
-        Integer slotCount = 256;
         Collection<Task> tasks = Set.of(
                 new TaskBuilder().build(),
                 new TaskBuilder().withIdentifier(1).build(),
                 new TaskBuilder().withIdentifier(2).build());
         ProblemPriority instance = ProblemPriority.builder()
                 .withValue(value)
-                .withSlotCount(slotCount)
                 .withTasks(tasks)
                 .build();
         assertThat(instance).as("built instance").isNotNull();
         SoftAssertions softy = new SoftAssertions();
         softy.assertThat(instance.getValue()).as("value").isEqualTo(value);
-        softy.assertThat(instance.getSlotCount()).as("slot count").isEqualTo(slotCount);
         softy.assertThat(instance.getTasks()).as("tasks").containsExactlyElementsOf(tasks);
         softy.assertAll();
     }
@@ -76,20 +72,20 @@ class ProblemPriorityTest extends ValidatingTest {
     void stringPresentation() {
         ProblemPriority instance = new ProblemPriorityBuilder().build();
         String asString = instance.toString();
-        assertThat(asString).as("String presentation").isEqualTo("ProblemPriority[value=1,slot count=20,task count=3]");
+        assertThat(asString).as("String presentation").isEqualTo("ProblemPriority[value=1,task count=3]");
     }
 
     @Test
     void equalObjects() {
         ProblemPriority instance1 = new ProblemPriorityBuilder().build();
-        ProblemPriority instance2 = new ProblemPriorityBuilder().withSlotCount(231542345).withTasks(null).build();
+        ProblemPriority instance2 = new ProblemPriorityBuilder().withTasks(null).build();
         assertThat(instance1).isEqualTo(instance2);
     }
 
     @Test
     void equalHashes() {
         ProblemPriority instance1 = new ProblemPriorityBuilder().build();
-        ProblemPriority instance2 = new ProblemPriorityBuilder().withSlotCount(231542345).withTasks(null).build();
+        ProblemPriority instance2 = new ProblemPriorityBuilder().withTasks(null).build();
         int hash1 = instance1.hashCode();
         int hash2 = instance2.hashCode();
         assertThat(hash1).isEqualTo(hash2);

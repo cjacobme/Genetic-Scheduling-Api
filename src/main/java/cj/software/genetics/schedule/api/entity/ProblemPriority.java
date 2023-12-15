@@ -24,10 +24,6 @@ public class ProblemPriority implements Serializable, Comparable<ProblemPriority
     @Min(1)
     private Integer value;
 
-    @NotNull
-    @Min(1)
-    private Integer slotCount;
-
     @NotEmpty
     private final Collection<@Valid Task> tasks = new ArrayList<>();
 
@@ -38,10 +34,6 @@ public class ProblemPriority implements Serializable, Comparable<ProblemPriority
         return value;
     }
 
-    public Integer getSlotCount() {
-        return slotCount;
-    }
-
     public Collection<Task> getTasks() {
         return Collections.unmodifiableCollection(tasks);
     }
@@ -50,7 +42,6 @@ public class ProblemPriority implements Serializable, Comparable<ProblemPriority
     public String toString() {
         ToStringBuilder builder = new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("value", value)
-                .append("slot count", slotCount)
                 .append("task count", tasks.size());
         String result = builder.build();
         return result;
@@ -104,11 +95,6 @@ public class ProblemPriority implements Serializable, Comparable<ProblemPriority
 
         public Builder withValue(Integer value) {
             instance.value = value;
-            return this;
-        }
-
-        public Builder withSlotCount(Integer slotCount) {
-            instance.slotCount = slotCount;
             return this;
         }
 
