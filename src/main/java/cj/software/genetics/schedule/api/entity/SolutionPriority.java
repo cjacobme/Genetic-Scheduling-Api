@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serial;
@@ -23,7 +24,7 @@ public class SolutionPriority implements Serializable, Comparable<SolutionPriori
     @Min(1)
     private Integer value;
 
-    private final SortedMap<Integer, Task> tasks = new TreeMap<>();
+    private final SortedMap<Integer, @Valid Task> tasks = new TreeMap<>();
 
     private SolutionPriority() {
     }
