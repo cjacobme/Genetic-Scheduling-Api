@@ -21,7 +21,7 @@ public class ProblemPriority implements Serializable, Comparable<ProblemPriority
     private static final long serialVersionUID = 1L;
 
     @NotNull
-    @Min(0)
+    @Min(1)
     private Integer value;
 
     @NotNull
