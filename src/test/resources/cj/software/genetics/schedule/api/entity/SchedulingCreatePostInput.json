@@ -3,7 +3,6 @@
     "priorities": [
       {
         "value": 1,
-        "slotCount": 20,
         "tasks": [
           {
             "duration": {

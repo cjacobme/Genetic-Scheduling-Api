@@ -2,7 +2,6 @@
   "priorities": [
     {
       "value": 1,
-      "slotCount": 150,
       "tasks": [
         {
           "identifier": 1,
@@ -29,7 +28,6 @@
     },
     {
       "value": 2,
-      "slotCount": 80,
       "tasks": [
         {
           "identifier": 101,
