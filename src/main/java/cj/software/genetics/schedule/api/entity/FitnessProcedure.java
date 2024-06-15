@@ -16,40 +16,9 @@ public enum FitnessProcedure {
 
     /**
      * the fitness value is calculated as 1.0 divided by the squared sum. If we for example 3 priorities with these
-     * durations:
-     *
-     * <table style="border: 1px solid black;">
-     *     <tr>
-     *         <th style="border: 1px solid black;">Priority</th>
-     *         <th style="border: 1px solid black;">duration</th>
-     *         <th style="border: 1px solid black;">scaling factor</th>
-     *         <th style="border: 1px solid black;">operation</th>
-     *         <th style="border: 1px solid black;">squared value</th>
-     *     </tr>
-     *     <tr>
-     *         <td style="border: 1px solid black;">1</td>
-     *         <td style="border: 1px solid black;">40 s</td>
-     *         <td style="border: 1px solid black;">3</td>
-     *         <td style="border: 1px solid black;">40 * 40 * 3</td>
-     *         <td style="border: 1px solid black;">4800</td>
-     *     </tr>
-     *     <tr>
-     *         <td style="border: 1px solid black;">2</td>
-     *         <td style="border: 1px solid black;">70 s</td>
-     *         <td style="border: 1px solid black;">2</td>
-     *         <td style="border: 1px solid black;">70 * 70 * 2</td>
-     *         <td style="border: 1px solid black;">9800</td>
-     *     </tr>
-     *     <tr>
-     *         <td style="border: 1px solid black;">3</td>
-     *         <td style="border: 1px solid black;">35 s</td>
-     *         <td style="border: 1px solid black;">1</td>
-     *         <td style="border: 1px solid black;">35 * 35</td>
-     *         <td style="border: 1px solid black;">1225</td>
-     *     </tr>
-     * </table>
-     * <p>
-     * The sum of all the values in the last column is 15825. The square root of that is 125.7975
+     * durations 40s, 70s, and 35s. We use a descending scaling factor, starting with the number of priorities. So
+     * for prio 1 we calculate 40 * 40 * 3 = 4800. For priority 2 it is 70 * 70 * 2 = 9800. For priority 3 it is
+     * 35 * 35 = 1225. The sum of all the values is 15825. The square root of that is 125.7975
      */
     SQUARED
 }
